@@ -1,0 +1,41 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 소스 코드가 있는 브랜치 이름
+
+permissions:
+  contents: write # GitHub Pages에 푸시할 권한 부여
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Node.js LTS 버전으로 설정
+
+      - name: Install Yarn
+        run: npm install -g yarn # yarn 설치
+
+      - name: Install dependencies
+        run: yarn install # yarn 사용
+
+      - name: Build React app
+        run: yarn build # yarn build 사용
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # React 앱 빌드 결과물이 위치한 디렉토리
