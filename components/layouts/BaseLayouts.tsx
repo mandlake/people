@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/app/header/page";
 import { usePathname } from "next/navigation";
 
 const BaseLayout = ({
@@ -12,7 +13,7 @@ const BaseLayout = ({
   return (
     <>
       {/* 현재 경로가 '/signin'이 아닌 경우에만 Header를 렌더링 */}
-      {/* {pathname !== "/signin" && <Header />} */}
+      {pathname !== "/signin" && <Header />}
       <div className="">
         <div>{children}</div>
       </div>

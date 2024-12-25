@@ -33,9 +33,9 @@ const LoginForm: React.FC<JoinFormProps> = ({ onSubmit }) => {
   return (
     <div className="min-h-screen bg-saramin-gray flex items-center justify-center">
       <div className="bg-white p-10 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-4">로그인</h2>
+        <h2 className="text-2xl font-bold mb-4">회원가입</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="gap-5 flex-col items-center">
           <TextField
             label="아이디"
             variant="outlined"
@@ -64,7 +64,7 @@ const LoginForm: React.FC<JoinFormProps> = ({ onSubmit }) => {
             onChange={(e) => setName(e.target.value)}
           />
           <Button type="submit" variant="contained" color="primary" fullWidth>
-            로그인
+            회원가입
           </Button>
         </form>
       </div>
